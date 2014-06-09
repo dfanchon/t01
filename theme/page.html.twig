@@ -1,0 +1,48 @@
+{% extends "@Root/page.html.twig" %}
+{% block pageStyle %}
+    {{ parent() }}
+    <!-- Add custom CSS here -->
+    <link href="/theme/{{ theme }}/css/stylish-portfolio.css" rel="stylesheet">
+    <link href="/theme/{{ theme }}/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+{% block pageMainContent %}
+    {% if rows %}
+        {% for row in rows %}
+            {% include row.template with row %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+{% block pageJavascript %}
+    {{ parent() }}
+    <!-- Add custom javascript here -->
+        <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+{% endblock %}

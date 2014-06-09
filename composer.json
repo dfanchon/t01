@@ -1,0 +1,6 @@
+{
+	"name": "dfanchon/t01",
+	"autoload": {
+        "classmap": ["src/t01"]
+    }
+}

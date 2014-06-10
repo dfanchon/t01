@@ -1,0 +1,19 @@
+{% extends "@Root/block.html.twig" %}
+
+{% block mainContent %}
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand"><a href="{% if rootPage  %}{{ url({'pageId':rootPage.id},true) }}{% endif %}">{{ rootPage.text }}</a>
+            </li>
+            {% for page in pages %}
+            	<li><a href="#{{page.text}}">{{page.text}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+    
+{% endblock %}
